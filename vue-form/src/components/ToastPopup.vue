@@ -1,0 +1,39 @@
+<template>
+  <div class="toast" v-bind:class="{'animation' : open}">login completed</div>
+</template>
+
+<script>
+let timer;
+
+export default {
+  props: ["open"],
+  watch: {
+    open(newValue) {
+      if (newValue) {
+        console.log("toast popup open");
+        clearTimeout(timer);
+        timer = setTimeout(() => this.$emit("close"), 2000);
+      }
+    }
+  }
+};
+</script>
+
+<style scoped>
+.toast {
+  width: 200px;
+  height: 40px;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: -5%;
+  left: 5%;
+  transition: bottom 2s linear;
+}
+.animation {
+  bottom: 5%;
+}
+</style>
