@@ -1,5 +1,7 @@
 <template>
   <div>
+    <!-- <progress-bar></progress-bar> -->
+    <ProgressBar></ProgressBar>
     <form v-on:submit.prevent="submitForm">
       <div>
         <label for="username">ID:</label>
@@ -26,6 +28,7 @@
 
 <script>
 import ToastPopup from "@/components/ToastPopup.vue";
+import ProgressBar from "@/components/ProgressBar.vue";
 
 function validateEmail(email) {
   const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -34,7 +37,8 @@ function validateEmail(email) {
 
 export default {
   components: {
-    ToastPopup
+    ToastPopup,
+    ProgressBar
   },
   data() {
     return {
@@ -65,7 +69,13 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+body {
+  margin: 0;
+}
+form {
+  padding: 5px 10px;
+}
 .username-input {
   outline: none;
 }
